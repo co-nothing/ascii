@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>소리의 디지털 표현 탐구</title>
+<style>
+  body { font-family: Arial, sans-serif; width: 80%; margin: auto; padding: 20px; text-align: center; margin-top: 30px;}
+  h2 { background: #4a90e2; color: white; padding: 10px; border-radius: 8px; }
+  table {  width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+ p {
+  background-color: #d6ecff;         
+  padding: 10px 20px;
+  border: 1px solid #e0e0e0;            
+  border-radius: 12px;                  
+  font-weight: 500;                     
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 15px;
+}
+  th, td { border: 1px solid #4a90e2; padding: 8px; width: 33.33%; /* 3등분 */ vertical-align: top; text-align: center;}
+  input[type="text"] { width: 90px; height: 30px; }
+  textarea { width: 100%; height: 160px; }
+  .input-row { display: flex; justify-content: space-around; margin-top: 10px; }
+  .input-cell { text-align: center; }
+  button {
+    background: #2e8dd2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+</style>
+</head>
+<body>
+
+<h2>소리의 디지털 표현 탐구</h2>
+<p>아날로그 소리가 디지털 소리로 바뀌는 과정을 탐구해보는 활동입니다.</p>
+
+<p style="text-align: left; background-color: #ffffff; ">1. 소리는 물체의 <input type="text">으로 생긴 <input type="text">이 공기를 통해 전달되는 것으로 디지털 기기에서 변환 과정을 거쳐 <input type="text">로 표현된다.</p>
+
+<h2>2. 소리를 디지털 신호로 변환하는 과정에 대해 설명하기</h2>
+<table>
+  <tr><th>과정</th><th>설명</th></tr>
+  <tr><td><center>표본화</td><td><input type="text" style="width: 100%;"></td></tr>
+  <tr><td><center>양자화</td><td><input type="text" style="width: 100%;"></td></tr>
+  <tr><td><center>부호화</td><td><input type="text" style="width: 100%;"></td></tr>
+</table>
+
+<h2>3. 아날로그 소리의 파형을 보고, 디지털 소리로 바꾸는 과정 표현하기</h2>
+<!-- 표본화 그래프 -->
+<p><strong>표본화</strong></p>
+<svg id="waveCanvas" width="1000" height="300" viewBox="0 0 1000 300" style="border:1px solid #ccc; display:block; margin:auto;">
+  <line x1="0" y1="250" x2="1000" y2="250" stroke="black" />
+  <line x1="50" y1="50" x2="50" y2="250" stroke="black" />
+  <text x="20" y="250">0</text>
+  <text x="20" y="210">1</text>
+  <text x="20" y="170">2</text>
+  <text x="20" y="130">3</text>
+  <text x="20" y="90">4</text>
+  <text x="20" y="50">5</text>
+  <text x="45" y="270">0</text>
+  <text x="145" y="270">0.5</text>
+  <text x="245" y="270">1.0</text>
+  <text x="345" y="270">1.5</text>
+  <text x="445" y="270">2.0</text>
+  <text x="545" y="270">2.5</text>
+  <text x="645" y="270">3.0</text>
+  <text x="745" y="270">3.5</text>
+  <text x="845" y="270">4.0</text>
+  <text x="945" y="270">4.5</text>
+  <text x="1045" y="270">5.0</text>
+  <g stroke="lightgray" stroke-width="1">
+    <line x1="50" y1="50" x2="50" y2="250" />
+    <line x1="150" y1="50" x2="150" y2="250" />
+    <line x1="250" y1="50" x2="250" y2="250" />
+    <line x1="350" y1="50" x2="350" y2="250" />
+    <line x1="450" y1="50" x2="450" y2="250" />
+    <line x1="550" y1="50" x2="550" y2="250" />
+    <line x1="650" y1="50" x2="650" y2="250" />
+    <line x1="750" y1="50" x2="750" y2="250" />
+    <line x1="850" y1="50" x2="850" y2="250" />
+    <line x1="950" y1="50" x2="950" y2="250" />
+    <line x1="50" y1="250" x2="1000" y2="250" />
+    <line x1="50" y1="210" x2="1000" y2="210" />
+    <line x1="50" y1="170" x2="1000" y2="170" />
+    <line x1="50" y1="130" x2="1000" y2="130" />
+    <line x1="50" y1="90" x2="1000" y2="90" />
+    <line x1="50" y1="50" x2="1000" y2="50" />
+  </g>
+  <path id="wavePath" d="M50 250 C150 200, 250 150, 350 100 S 550 150, 650 200 S 850 150, 950 100"
+        fill="none" stroke="blue" stroke-width="2" />
+</svg>
+<div id="inputs" style="position: relative; width: 1000px; margin: auto; margin-top: -300px; height: 0;"></div>
+
+<!-- 양자화 그래프 -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<p><strong>양자화</strong></p>
+<svg id="waveCanvas2" width="1000" height="300" viewBox="0 0 1000 300" style="border:1px solid #ccc; display:block; margin:auto;">
+  <line x1="0" y1="250" x2="1000" y2="250" stroke="black" />
+  <line x1="50" y1="50" x2="50" y2="250" stroke="black" />
+  <text x="20" y="250">0</text>
+  <text x="20" y="210">1</text>
+  <text x="20" y="170">2</text>
+  <text x="20" y="130">3</text>
+  <text x="20" y="90">4</text>
+  <text x="20" y="50">5</text>
+  <text x="45" y="270">0</text>
+  <text x="145" y="270">0.5</text>
+  <text x="245" y="270">1.0</text>
+  <text x="345" y="270">1.5</text>
+  <text x="445" y="270">2.0</text>
+  <text x="545" y="270">2.5</text>
+  <text x="645" y="270">3.0</text>
+  <text x="745" y="270">3.5</text>
+  <text x="845" y="270">4.0</text>
+  <text x="945" y="270">4.5</text>
+  <text x="1045" y="270">5.0</text>
+  <g stroke="lightgray" stroke-width="1">
+    <line x1="50" y1="50" x2="50" y2="250" />
+    <line x1="150" y1="50" x2="150" y2="250" />
+    <line x1="250" y1="50" x2="250" y2="250" />
+    <line x1="350" y1="50" x2="350" y2="250" />
+    <line x1="450" y1="50" x2="450" y2="250" />
+    <line x1="550" y1="50" x2="550" y2="250" />
+    <line x1="650" y1="50" x2="650" y2="250" />
+    <line x1="750" y1="50" x2="750" y2="250" />
+    <line x1="850" y1="50" x2="850" y2="250" />
+    <line x1="950" y1="50" x2="950" y2="250" />
+    <line x1="50" y1="250" x2="1000" y2="250" />
+    <line x1="50" y1="210" x2="1000" y2="210" />
+    <line x1="50" y1="170" x2="1000" y2="170" />
+    <line x1="50" y1="130" x2="1000" y2="130" />
+    <line x1="50" y1="90" x2="1000" y2="90" />
+    <line x1="50" y1="50" x2="1000" y2="50" />
+  </g>
+  <path id="wavePath2" d="M50 250 C150 200, 250 150, 350 100 S 550 150, 650 200 S 850 150, 950 100"
+        fill="none" stroke="blue" stroke-width="2" />
+</svg>
+<div id="inputs2" style="position: relative; width: 1000px; margin: auto; margin-top: -300px; height: 0;"></div>
+
+<!-- 표본화 스크립트 -->
+<script>
+  const svg = document.getElementById('waveCanvas');
+  const path = document.getElementById('wavePath');
+  const pathLength = path.getTotalLength();
+  const inputContainer = document.getElementById('inputs');
+
+  const steps = 11;
+  for (let i = 0; i < steps; i++) {
+    const xTarget = 50 + i * 100;
+    let nearestPoint = null;
+    let minDiff = Infinity;
+
+    for (let l = 0; l <= pathLength; l += 0.5) {
+      const pt = path.getPointAtLength(l);
+      const diff = Math.abs(pt.x - xTarget);
+      if (diff < minDiff) {
+        minDiff = diff;
+        nearestPoint = pt;
+      }
+    }
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', nearestPoint.x);
+    circle.setAttribute('cy', nearestPoint.y);
+    circle.setAttribute('r', 4);
+    circle.setAttribute('fill', 'red');
+    svg.appendChild(circle);
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.style.position = 'absolute';
+    input.style.left = `${nearestPoint.x - 15}px`;
+    input.style.top = `${nearestPoint.y - 40}px`;
+    input.style.width = '30px';
+    inputContainer.appendChild(input);
+  }
+</script>
+
+<!-- 양자화 스크립트 -->
+<script>
+  const svg2 = document.getElementById('waveCanvas2');
+  const path2 = document.getElementById('wavePath2');
+  const pathLength2 = path2.getTotalLength();
+  const inputContainer2 = document.getElementById('inputs2');
+
+  // 기존 곡선 제거
+  path2.remove();
+
+  const steps2 = 11;
+  for (let i = 0; i < steps2; i++) {
+    const xTarget2 = 50 + i * 100;
+    let nearestPoint2 = null;
+    let minDiff2 = Infinity;
+
+    for (let l = 0; l <= pathLength2; l += 0.5) {
+      const pt2 = path2.getPointAtLength(l);
+      const diff2 = Math.abs(pt2.x - xTarget2);
+      if (diff2 < minDiff2) {
+        minDiff2 = diff2;
+        nearestPoint2 = pt2;
+      }
+    }
+
+    // y값을 40 단위(격자 간격)로 반올림
+    const quantizedY = Math.round((nearestPoint2.y - 50) / 40) * 40 + 50;
+
+    // 붉은 점 추가
+    const circle2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle2.setAttribute('cx', nearestPoint2.x);
+    circle2.setAttribute('cy', quantizedY);
+    circle2.setAttribute('r', 4);
+    circle2.setAttribute('fill', 'red');
+    svg2.appendChild(circle2);
+
+    // 굵은 막대(직사각형) 추가
+    const rect2 = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect2.setAttribute('x', nearestPoint2.x - 10); // 가로 위치 - 폭/2
+    rect2.setAttribute('y', quantizedY);
+    rect2.setAttribute('width', 20);  // 가로폭 20px
+    rect2.setAttribute('height', 250 - quantizedY); // 아래까지 높이
+    rect2.setAttribute('fill', 'red');
+    svg2.appendChild(rect2);
+
+    // 입력 상자 추가
+    const input2 = document.createElement('input');
+    input2.type = 'text';
+    input2.style.position = 'absolute';
+    input2.style.left = `${nearestPoint2.x - 15}px`;
+    input2.style.top = `${quantizedY - 40}px`;
+    input2.style.width = '30px';
+    inputContainer2.appendChild(input2);
+  }
+</script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+<h3>4. OX퀴즈 풀어보기</h3>
+<table>
+  <tr><th>OX퀴즈</th><th>정답</th></tr>
+  <tr><td><center>소리는 3비트로만 표현 가능하다.</td><td><center><input type="text"></td></tr>
+  <tr><td><center>표본화는 소리의 크기를 정수로 바꾸는 과정이다.</td><td><center><input type="text"></td></tr>
+  <tr><td><center>소리를 부호화하면 귀에 들리지 않게 된다.</td><td><center><input type="text"></td></tr>
+  <tr><td><center>디지털 소리는 파형을 이진수로 바꿔 저장한다.</td><td><center><input type="text"></td></tr>
+</table>
+
+<h3>5. 더 깊이 생각해보기</h3>
+<p>1) 표본화(샘플링) 간격이 좁을수록 <input type="text"> 한다. (예: <input type="text"> 을 다음 칸에 채워보세요)</p>
+<textarea></textarea>
+
+<p>2) 표본화(샘플링) 간격이 넓을수록 <input type="text"> 한다. (예: <input type="text"> 을 다음 칸에 채워보세요)</p>
+<textarea></textarea>
+
+<h3>6. 소리 파형을 생성하고 디지털로 표현하기(모둠활동)</h3>
+<table border="1" style="width: 100%; table-layout: fixed;">
+  <tr><th>표본화</th><th>양자화</th><th>부호화</th></tr>
+  <tr>
+    <td>
+      <p>마우스로 드래그하여 파형을 그려보세요.</p>
+      <svg id="drawingArea" width="400" height="150" style="border: 1px solid black;"></svg>
+      <br>
+      <button id="clearDrawing">초기화</button>
+      
+    </td>
+    <td>
+<p>양자화 버튼을 클릭하면 가까운 정숫값으로 표시되요.</p>
+      <svg id="quantizingArea" width="400" height="150" style="border: 1px solid black;"></svg>
+<button id="quantizeButton">양자화로 변환</button>
+
+    </td>
+    <td>
+<p>양자화 버튼을 클릭하면 가까운 정숫값으로 표시되요.</p>
+   <svg id="encodingBox" width="400" height="150" style="border: 1px solid black;"></svg>
+ <button id="encodeButton">부호화로 변환</button>
+</td>
+
+  </tr>
+</table>
+
+<script>
+  const svgDraw = document.getElementById('drawingArea');
+  const svgQuant = document.getElementById('quantizingArea');
+  const clearButton = document.getElementById('clearDrawing');
+  const quantizeButton = document.getElementById('quantizeButton');
+
+  let pathPoints = [];
+  let isDrawing = false;
+  let lastPoint = null;
+
+  svgDraw.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    pathPoints = [];
+    lastPoint = getMousePosition(svgDraw, e);
+    pathPoints.push(lastPoint);
+  });
+
+  svgDraw.addEventListener('mousemove', (e) => {
+    if (!isDrawing) return;
+    const pt = getMousePosition(svgDraw, e);
+    
+    // 점 찍기 (지속적 유지)
+    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    dot.setAttribute('cx', pt.x);
+    dot.setAttribute('cy', pt.y);
+    dot.setAttribute('r', 1);
+    dot.setAttribute('fill', 'blue');
+    svgDraw.appendChild(dot);
+
+    // 선 그리기 (지속적 유지)
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', lastPoint.x);
+    line.setAttribute('y1', lastPoint.y);
+    line.setAttribute('x2', pt.x);
+    line.setAttribute('y2', pt.y);
+    line.setAttribute('stroke', 'blue');
+    line.setAttribute('stroke-width', 1);
+    svgDraw.appendChild(line);
+
+    pathPoints.push(pt);
+    lastPoint = pt;
+  });
+
+  svgDraw.addEventListener('mouseup', () => {
+    isDrawing = false;
+  });
+
+  clearButton.addEventListener('click', () => {
+    svgDraw.innerHTML = '';
+    pathPoints = [];
+  });
+
+  quantizeButton.addEventListener('click', () => {
+    svgQuant.innerHTML = '';
+    if (pathPoints.length === 0) return;
+
+    const stepSize = 20;
+    let lastX = pathPoints[0].x;
+    let lastY = Math.round(pathPoints[0].y / stepSize) * stepSize;
+
+    for (let i = 1; i < pathPoints.length; i += 10) {
+      const pt = pathPoints[i];
+      const quantY = Math.round(pt.y / stepSize) * stepSize;
+
+      const hLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      hLine.setAttribute('x1', lastX);
+      hLine.setAttribute('y1', lastY);
+      hLine.setAttribute('x2', pt.x);
+      hLine.setAttribute('y2', lastY);
+      hLine.setAttribute('stroke', 'red');
+      hLine.setAttribute('stroke-width', 2);
+      svgQuant.appendChild(hLine);
+
+      if (quantY !== lastY) {
+        const vLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        vLine.setAttribute('x1', pt.x);
+        vLine.setAttribute('y1', lastY);
+        vLine.setAttribute('x2', pt.x);
+        vLine.setAttribute('y2', quantY);
+        vLine.setAttribute('stroke', 'red');
+        vLine.setAttribute('stroke-width', 2);
+        svgQuant.appendChild(vLine);
+      }
+
+const encodeButton = document.getElementById('encodeButton');
+  const encodingBox = document.getElementById('encodingBox');
+
+  encodeButton.addEventListener('click', () => {
+    encodingBox.innerHTML = '';
+    if (pathPoints.length === 0) return;
+
+    const threshold = 75;
+    let xPos = 10;
+    let yPos = 30;
+    const maxWidth = 380;
+
+    for (let i = 0; i < pathPoints.length; i += 10) {
+      const bit = pathPoints[i].y < threshold ? '1' : '0';
+
+      const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttribute('x', xPos);
+      text.setAttribute('y', yPos);
+      text.textContent = bit;
+      encodingBox.appendChild(text);
+
+      xPos += 15;  // 글자 간격
+ // 줄바꿈 처리
+  if (xPos > maxWidth) {
+    xPos = 10;      // 줄 시작으로 이동
+    yPos += 20;     // 다음 줄로 이동
+  }
+    }
+  });
+      lastX = pt.x;
+      lastY = quantY;
+    }
+  });
+
+  function getMousePosition(svgElement, evt) {
+    const rect = svgElement.getBoundingClientRect();
+    return { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
+  }
+
+</script>
+<div class="button-container" style="text-align:center; margin-top:30px;">
+  <button onclick="saveAsImage()">이미지 저장</button>
+  <button onclick="saveAsPDF()">PDF 저장</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+
+<script>
+  function saveAsImage() {
+    html2canvas(document.body).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'activity.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  }
+
+  function saveAsPDF() {
+    html2canvas(document.body).then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('activity.pdf');
+    });
+  }
+</script>
+
+</body>
+</html>
