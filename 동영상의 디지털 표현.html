@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>동영상의 디지털 표현 탐구</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      background-color: #4a90e2;
+      color: #ffffff;
+      padding: 5px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    p {
+      background-color: #d6ecff;
+      padding: 10px 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th {
+      border: 1px solid #4a90e2;
+      padding: 8px;
+      text-align: center;
+    }
+    td {
+      background-color: #fff;
+      padding: 8px;
+      border: 1px solid #4a90e2;
+      text-align: left;
+    }
+    textarea {
+      width: 100%;
+      height: 50px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+      box-sizing: border-box;
+      resize: none;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+    button {
+      background: #2e8dd2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <h1>동영상의 디지털 표현 탐구</h1>
+  <p>#동영상의 개념과 원리를 이해하고 동영상의 특징을 탐구해보는 활동입니다.</p>
+
+  <h2>1. 동영상의 개념과 관련 용어 정리하기</h2>
+  <table>
+    <tr><th>개념</th><th>설명</th></tr>
+    <tr><td><center><textarea></textarea></td><td>정지된 이미지를 의미함</td></tr>
+    <tr><td><center><textarea></textarea></td><td>텔레비전처럼 움직이는 영상이며, 이미지, 소리, 문자를 포함</td></tr>
+    <tr><td><center><textarea></textarea></td><td>FPS (1초 동안 보이는 프레임 수, 동영상의 품질 결정)</td></tr>
+  </table>
+  <p>※ 사람의 눈은 25~30FPS 정도면 자연스러운 동영상으로 인식합니다.</p>
+
+  <h2>2. 동영상 표현 장치</h2>
+  <p>- 동영상 입출력 장치: <textarea style="width: 100px;"></textarea>, <textarea style="width: 100px;"></textarea> 과 같은 기기를 이용함</p>
+  <p>- 동영상 편집: <textarea style="width: 160px;"></textarea>을 이용해 이미지, 소리, 문자를 편집</p>
+
+  <h2>3. 동영상 파일의 형식</h2>
+  <table>
+    <tr><th>확장자</th><th>설명</th></tr>
+    <tr><td><center><textarea style="width: 150px;"></textarea></td><td>윈도 표준 동영상 파일 형식으로 용량 큼</td></tr>
+    <tr><td><center><textarea style="width: 150px;"></textarea></td><td>스마트폰에서 주로 사용하는 저용량 고화질</td></tr>
+    <tr><td><center><textarea style="width: 150px;"></textarea></td><td>애플에서 만든 동영상 파일 형식으로 저용량 고화질</td></tr>
+  </table>
+
+  <h2>4. 학교폭력예방을 주제로 동영상 제작하기</h2>
+  <p># 주제: <textarea></textarea></p>
+  <p># 편집 프로그램: <textarea></textarea></p>
+  <p># 시나리오:
+  <textarea rows="5" style="height: 170px;"></textarea></p>
+
+  <h2>5. 동영상 재생기(최대 20장)</h2>
+  <center>
+    <input type="file" id="imageInput" accept="image/*" multiple>
+    <br><br>
+    <table>
+      <tr>
+        <td>
+          <center><div id="imageDisplay" style="width: 600px; height: 300px; border: 1px solid black; display: flex; justify-content: center; align-items: center;">여기에 이미지가 표시됩니다</div>
+        </td>
+        <td style="width: 300px;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <label>프레임률: <span id="fpsValue">1</span> fps</label>
+            <input type="range" id="fpsSlider" min="1" max="35" value="1">
+            <br>
+            <button id="startButton">재생</button>
+            <button id="stopButton">정지</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </center>
+
+  <div class="button-container">
+    <button onclick="saveAsImage()">이미지 저장</button>
+    <button onclick="saveAsPDF()">PDF 저장</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const imageDisplay = document.getElementById('imageDisplay');
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    const fpsSlider = document.getElementById('fpsSlider');
+    const fpsValue = document.getElementById('fpsValue');
+
+    let images = [];
+    let currentIndex = 0;
+    let intervalId = null;
+
+    fpsSlider.addEventListener('input', () => {
+      fpsValue.textContent = fpsSlider.value;
+    });
+
+    imageInput.addEventListener('change', () => {
+      images = [];
+      const files = Array.from(imageInput.files).slice(0, 20);
+      files.forEach(file => {
+        const url = URL.createObjectURL(file);
+        images.push(url);
+      });
+      if (images.length > 0) showImage(0);
+    });
+
+    function showImage(index) {
+      imageDisplay.innerHTML = `<img src="${images[index]}" style="max-width: 100%; max-height: 100%;">`;
+    }
+
+    startButton.addEventListener('click', () => {
+      if (intervalId) clearInterval(intervalId);
+      if (images.length === 0) return;
+      currentIndex = 0;
+      showImage(currentIndex);
+      const intervalTime = 1000 / parseInt(fpsSlider.value);
+      intervalId = setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      }, intervalTime);
+    });
+
+    stopButton.addEventListener('click', () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    });
+
+    function saveAsImage() {
+      html2canvas(document.body).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'activity.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+
+    function saveAsPDF() {
+      html2canvas(document.body).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('activity.pdf');
+      });
+    }
+  </script>
+</body>
+</html>
